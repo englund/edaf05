@@ -1,0 +1,3 @@
+[submodule "algdes-labs"]
+	path = algdes-labs
+	url = https://github.com/thorehusfeldt/algdes-labs/
