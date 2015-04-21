@@ -31,9 +31,9 @@ class UnionFind:
         self.parent[u] = u
 
     def find(self, u):
-        if self.parent[u] == u:
-            return u
-        return self.find(self.parent[u])
+        if self.parent[u] != u:
+            self.parent[u] = self.find(self.parent[u])
+        return self.parent[u]
 
     def union(self, u, v):
         root_u = self.find(u)
