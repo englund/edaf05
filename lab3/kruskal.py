@@ -26,9 +26,11 @@ class Kruskal:
 class UnionFind:
     def __init__(self):
         self.parent = {}
+        self.rank = {}
 
     def add(self, u):
         self.parent[u] = u
+        self.rank[u] = 0
 
     def find(self, u):
         if self.parent[u] != u:
@@ -38,8 +40,12 @@ class UnionFind:
     def union(self, u, v):
         root_u = self.find(u)
         root_v = self.find(v)
-        if root_u != root_v:
+        if self.rank[root_u] > self.rank[root_v]:
+            self.parent[root_v] = root_u
+            self.rank[root_u] += 1
+        else:
             self.parent[root_u] = root_v
+            self.rank[root_v] += 1
 
 if __name__ == '__main__':
     kruskal = Kruskal()
